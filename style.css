@@ -37,7 +37,7 @@ main {
   height: auto;
   border-radius: 4px;
 }
-.about, .contact {
+about {
   margin-top: 3rem;
   margin-left: 2rem;
 }
