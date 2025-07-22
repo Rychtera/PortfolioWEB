@@ -39,6 +39,7 @@ main {
 }
 .about, .contact {
   margin-top: 3rem;
+  margin-left: 3rem;
 }
 .btn {
   display: inline-block;
