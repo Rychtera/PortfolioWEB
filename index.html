@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RYCHTERA</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>RYCHTERA</h1>
+    <div id="lang-switch">
+      <button onclick="setLang('en')">🇬🇧</button>
+      <button onclick="setLang('cz')">🇨🇿</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="portfolio">
+      <h2 data-en="Portfolio" data-cz="Portfolio">Portfolio</h2>
+      <div class="gallery">
+        <img src="images/_7180017.jpg" alt="Photo 1" />
+        <img src="images/_7180075.jpg" alt="Photo 2" />
+        <img src="images/_7180109.jpg" alt="Photo 3" />
+      </div>
+    </section>
+
+    <section class="about">
+      <h2 data-en="About Me" data-cz="O mně">About Me</h2>
+      <p data-en="Shows, tour, club photography and video maker. RAP culture enjoyer."
+         data-cz="Fotím koncerty, kluby a tour. Tvořím fotky i videa. Milovník rapové kultury.">
+        Shows, tour, club photography and video maker. RAP culture enjoyer.
+      </p>
+    </section>
+
+    <section class="contact">
+      <h2 data-en="Book a Shoot" data-cz="Rezervace focení">Book a Shoot</h2>
+      <a href="mailto:s.rychtera@gmail.com?subject=Booking%20shoot" class="btn"
+         data-en="Book Now" data-cz="Rezervovat">Book Now</a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://instagram.com/s_rychtera" target="_blank">@s_rychtera</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
