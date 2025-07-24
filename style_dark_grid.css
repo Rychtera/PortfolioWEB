@@ -26,11 +26,12 @@ a {
 
 a:hover {
   text-decoration: underline;
+  transform: scale(1.05);
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   padding: 1rem;
   max-width: 1200px;
@@ -47,11 +48,11 @@ a:hover {
 
 
 .gallery img:hover {
-  transform: scale(1.5);
+  transform: scale(1.05);
 }
 
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 footer {
