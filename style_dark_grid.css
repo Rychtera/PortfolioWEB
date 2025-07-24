@@ -30,7 +30,7 @@ a:hover {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 16px;
   padding: 1rem;
   max-width: 1200px;
@@ -41,13 +41,13 @@ a:hover {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 
 .gallery img:hover {
-  transform: scale(1.02);
+  transform: scale(1.5);
 }
 
 section {
