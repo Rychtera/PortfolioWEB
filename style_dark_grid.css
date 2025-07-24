@@ -48,7 +48,7 @@ a:hover {
 
 
 .gallery img:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 section {
@@ -71,8 +71,6 @@ footer {
 
 .lang-switch button {
   background: none;
-  border: 1px solid #444;
-  color: #fff;
   padding: 0.3rem 0.6rem;
   margin-right: 0.5rem;
   cursor: pointer;
@@ -85,7 +83,7 @@ footer {
 }
 
 /* Responsive Text Blocks */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   body {
     padding: 1rem;
   }
