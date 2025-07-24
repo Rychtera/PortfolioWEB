@@ -63,7 +63,7 @@ footer {
 
 /* Language Switcher */
 .lang-switch {
-  margin-bottom: 1rem;
+  align-content: right;
 }
 
 .lang-switch button {
