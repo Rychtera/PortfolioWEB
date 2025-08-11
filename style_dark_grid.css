@@ -42,7 +42,7 @@ a:hover {
 }
 
 .gallery video {
-  width: 50%;
+  width: 20%;
   margin-bottom: 10px;
   display: block;
 }
@@ -50,11 +50,13 @@ a:hover {
 
 .gallery img:hover {
   transform: scale(1.08);
+  cursor:pointer;
 }
 
 
 .gallery video:hover {
   transform: scale(1.08);
+  cursor:pointer;
 }
 
 section {
@@ -123,6 +125,11 @@ footer {
 }
 
 .lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox video {
   max-width: 90%;
   max-height: 90%;
 }
