@@ -41,9 +41,19 @@ a:hover {
   display: block;
 }
 
+.gallery video {
+  width: 100%;
+  margin-bottom: 10px;
+  display: block;
+}
 
 
 .gallery img:hover {
+  transform: scale(1.08);
+}
+
+
+.gallery video:hover {
   transform: scale(1.08);
 }
 
