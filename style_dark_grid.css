@@ -42,7 +42,7 @@ a:hover {
 }
 
 .gallery video {
-  width: 100%;
+  width: 50%;
   margin-bottom: 10px;
   display: block;
 }
