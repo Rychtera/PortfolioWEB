@@ -46,7 +46,7 @@ a:hover {
   height: 1920px;
   object-fit: cover;
   margin-bottom: 10px;
-  display: block;
+  display: grid;
 }
 
 
