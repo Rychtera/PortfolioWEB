@@ -18,7 +18,7 @@ h1 {
   color: #f5f5f5;
   margin-bottom: 1rem;
   text-align: center;
-  font-size: 30vh;
+  font-size: 20vh;
 }
 
 h2 {
@@ -71,7 +71,7 @@ section {
   margin-bottom: 2rem;
 }
 
-section.contact {
+.contact {
   text-align: center;
 }
 
