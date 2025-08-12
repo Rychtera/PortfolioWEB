@@ -69,8 +69,12 @@ a:hover {
 
 section {
   margin-bottom: 2rem;
+}
+
+section.contact {
   text-align: center;
 }
+
 
 footer {
   text-align: center;
