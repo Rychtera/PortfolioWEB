@@ -8,8 +8,8 @@
 
 body {
   font-family: 'Helvetica Neue', sans-serif;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1.0) 100%);
-   color: ghostwhite;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 1.0) 100%);
+  color: white;
   padding: 2rem;
   line-height: 1.6;
 }
@@ -46,12 +46,16 @@ a:hover {
 .gallery img {
   width: 100%;
   margin-bottom: 10px;
+  border: 0px;
+  border-radius: 25px;
   display: block;
 }
 
 .gallery video {
   width: 100%;
   margin-bottom: 10px;
+  border: 0px;
+  border-radius: 25px;
   display: grid;
 }
 
