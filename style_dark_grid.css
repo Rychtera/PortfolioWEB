@@ -8,8 +8,8 @@
 
 body {
   font-family: 'Helvetica Neue', sans-serif;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
-   color: #ff;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1.0) 100%);
+   color: ghostwhite;
   padding: 2rem;
   line-height: 1.6;
 }
