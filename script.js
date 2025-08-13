@@ -24,7 +24,7 @@ closeBtn.addEventListener("click", () => {
 // Create tooltip element
 const tooltip = document.createElement('div');
 tooltip.className = 'img-tooltip';
-tooltip.textContent = 'Your hover text here';
+tooltip.textContent = 'Click to enlarge photo';
 document.body.appendChild(tooltip);
 
 // Select all gallery images (adjust selector to match your gallery)
