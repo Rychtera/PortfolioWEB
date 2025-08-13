@@ -24,7 +24,7 @@ closeBtn.addEventListener("click", () => {
 // Create tooltip element
 const tooltip = document.createElement('div');
 tooltip.className = 'img-tooltip';
-tooltip.textContent = 'Click to enlarge photo';
+tooltip.textContent = 'Click to enlarge';
 document.body.appendChild(tooltip);
 
 // Select all gallery images (adjust selector to match your gallery)
