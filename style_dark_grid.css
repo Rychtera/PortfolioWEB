@@ -159,3 +159,18 @@ footer {
   color: white;
   cursor: pointer;
 }
+
+
+
+.tooltip-follow {
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 14px;
+  pointer-events: none; /* so it doesn't block hover */
+  white-space: nowrap;
+  z-index: 1000;
+  display: none;
+}
