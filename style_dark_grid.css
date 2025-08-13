@@ -161,15 +161,15 @@ footer {
 }
 
 
-.tooltip-follow {
-  position: absolute;
-  background-color: black;
+.img-tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.85);
   color: white;
-  padding: 4px 8px;
-  border-radius: 5px;
+  padding: 6px 10px;
   font-size: 14px;
-  pointer-events: none; /* so it doesn't block hover */
-  white-space: nowrap;
-  z-index: 1000;
-  display: none;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 9999;
 }
