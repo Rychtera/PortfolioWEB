@@ -21,15 +21,23 @@ closeBtn.addEventListener("click", () => {
 });
 
 
-const hoverArea = document.getElementById('hover-area');
-const tooltip = document.getElementById('tooltip');
+// Create tooltip element
+const tooltip = document.createElement('div');
+tooltip.className = 'img-tooltip';
+tooltip.textContent = 'Your hover text here';
+document.body.appendChild(tooltip);
 
-hoverArea.addEventListener('mousemove', (e) => {
-  tooltip.style.display = 'block';
-  tooltip.style.left = e.pageX + 10 + 'px'; // offset from cursor
-  tooltip.style.top = e.pageY + 10 + 'px';
-});
+// Select all gallery images (adjust selector to match your gallery)
+const galleryImages = document.querySelectorAll('.gallery img');
 
-hoverArea.addEventListener('mouseleave', () => {
-  tooltip.style.display = 'none';
+galleryImages.forEach(img => {
+  img.addEventListener('mousemove', e => {
+    tooltip.style.left = e.clientX + 15 + 'px';
+    tooltip.style.top = e.clientY + 15 + 'px';
+    tooltip.style.opacity = '1';
+  });
+
+  img.addEventListener('mouseleave', () => {
+    tooltip.style.opacity = '0';
+  });
 });
