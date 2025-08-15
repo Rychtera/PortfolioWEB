@@ -38,6 +38,12 @@ a:hover {
 }
 
 
+.portfolio {
+margin-bottom: 2rem;
+margin-left: 5rem;
+margin-right: 5rem;
+}
+
 .gallery {
   column-count: 3; /* adjust for desktop */
   column-gap: 10px;
