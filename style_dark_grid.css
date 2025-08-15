@@ -122,17 +122,45 @@ footer {
 }
 
 /* Responsive Text Blocks */
-@media (max-width: 400px) {
+/* Tablet breakpoint */
+@media (max-width: 900px) {
+  .portfolio,
+  section {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .gallery {
+    column-count: 2;
+  }
+
+  h1 {
+    font-size: 6vh;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 600px) {
   body {
     padding: 1rem;
   }
 
-  h1 {
-    font-size: 1.8rem;
+  .portfolio,
+  section {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .gallery {
-    grid-template-columns: 1fr;
+    column-count: 1;
+  }
+
+  h1 {
+    font-size: 4vh;
+  }
+
+  h2 {
+    font-size: 1.2rem;
   }
 }
 
