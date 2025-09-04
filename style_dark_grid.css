@@ -99,8 +99,7 @@ footer {
 
 /* Language Switcher */
 header div {
-  align-content: right;
-  margin-left: 20vh;
+  display: inline-grid;
 }
 
 .lang-btn {
@@ -120,7 +119,7 @@ header div {
 }
 
 .lang-switch button:hover {
-  background-color: #222;
+  background-color: transparent;
 }
 
 /* Responsive Text Blocks */
