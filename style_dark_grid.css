@@ -100,7 +100,7 @@ footer {
 /* Language Switcher */
 .lang-switch {
   align-content: right;
-  margin-left: 1rem;
+  margin-left: 20vh;
 }
 
 .lang-btn {
@@ -116,6 +116,7 @@ footer {
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.2s ease-in-out;
+  margin-left: 20vh;
 }
 
 .lang-switch button:hover {
