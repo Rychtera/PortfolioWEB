@@ -98,7 +98,7 @@ footer {
 }
 
 /* Language Switcher */
-header.div {
+header div {
   align-content: right;
   margin-left: 20vh;
 }
