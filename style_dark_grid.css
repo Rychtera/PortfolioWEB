@@ -100,6 +100,7 @@ footer {
 /* Language Switcher */
 header div {
   display: inline-grid;
+  padding-left: 20vh;
 }
 
 .lang-btn {
@@ -138,6 +139,12 @@ header div {
   h1 {
     font-size: 6vh;
   }
+
+  header div {
+  display: inline-grid;
+  padding-left: 10vh;
+}
+  
 }
 
 /* Mobile breakpoint */
@@ -161,6 +168,12 @@ header div {
   h2 {
     font-size: 1.2rem;
   }
+
+  header div {
+  display: inline-grid;
+  padding-left: 5vh;
+}
+  
 }
 
 .lightbox {
