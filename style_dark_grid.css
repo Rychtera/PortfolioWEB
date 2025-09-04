@@ -140,10 +140,7 @@ header div {
     font-size: 6vh;
   }
 
-  header div {
-  display: inline-grid;
-  padding-left: 10vh;
-}
+
   
 }
 
@@ -169,10 +166,7 @@ header div {
     font-size: 1.2rem;
   }
 
-  header div {
-  display: inline-grid;
-  padding-left: 5vh;
-}
+
   
 }
 
