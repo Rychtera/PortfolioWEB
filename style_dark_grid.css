@@ -239,6 +239,7 @@ header div {
   font-style: italic;
   margin-bottom: 2rem;
   color: #aaa;
+  text-align: center;
 }
 
 
@@ -329,5 +330,14 @@ ul li {
   .card .price {
     font-size: 1rem;
   }
+
+  .pricing {
+  margin: auto;
+  text-align: center;
+  color: #f5f5f5;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 1rem;
+}
 }
 
