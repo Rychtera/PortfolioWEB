@@ -221,6 +221,14 @@ header div {
 
       /* Pricing page styles to match portfolio theme */
 
+.main .pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+
+      
 .pricing {
   max-width: 600px;
   margin: 0 auto;
@@ -247,11 +255,6 @@ header div {
   box-shadow: 0 4px 15px rgba(0,0,0,0.6);
   text-align: left;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  
-    display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
 }
 
 .card:hover {
