@@ -313,6 +313,11 @@ header div {
   transform: scale(1.05);
 }
 
+nav ul li {
+  margin: .5rem 0;
+  color: #ddd;
+}
+
 /* Responsive tweaks */
 @media (max-width: 600px) {
   .card h2 {
