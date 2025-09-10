@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RYCHTERA — Portfolio</title>
+  <meta name="theme-color" content="#0b0b0c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0c;           /* deep, OLED-friendly */
+      --bg-soft: #111114;
+      --panel: #151519;
+      --panel-2: #1a1a20;
+      --text: #e8e8ea;        /* high-contrast neutral */
+      --muted: #a1a1aa;
+      --link: #9AE6FF;        /* icy blue accent */
+      --accent: #6EE7F5;
+      --ring: #2b95a3;
+      --shadow: 0 10px 30px rgba(0,0,0,.55);
+      --radius: 18px;
+      --maxw: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 50% -10%, #151515 0%, var(--bg) 40%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ---------- Header / Nav ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 40;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 16px;
+      padding: 14px clamp(12px, 3vw, 28px);
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(12,12,14,.85), rgba(12,12,14,.35));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .brand { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .brand a { color: var(--text); text-decoration: none; }
+    .nav ul { display: flex; gap: 18px; list-style: none; padding: 0; margin: 0; }
+    .nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+    .nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+    .nav .right { display: flex; gap: 10px; justify-content: end; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 14px; border-radius: 999px; gap: 8px;
+      background: linear-gradient(180deg, var(--accent), var(--link));
+      color: #081217; border: 0; font-weight: 700; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(108, 231, 245, .25);
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+        .insta {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 14px; border-radius: 999px; gap: 8px;
+      background: linear-gradient(180deg, var(--accent), var(--link));
+      color: #081217; border: 0; font-weight: 700; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(108, 231, 245, .25);
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .insta:hover { transform: translateY(-2px); filter: brightness(1.05); cursor: pointer; }
+
+    .icon-btn {
+      border: 1px solid rgba(255,255,255,.08); background: var(--panel);
+      color: var(--text); border-radius: 999px; height: 40px; width: 40px;
+      display: grid; place-items: center; cursor: pointer; transition: border-color .15s ease, transform .15s;
+    }
+    .icon-btn:hover{ border-color: rgba(255,255,255,.18); transform: translateY(-1px); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 88vh; display: grid; place-items: center;
+      padding: clamp(24px, 5vw, 48px) 16px 48px;
+      position: relative; isolation: isolate;
+    }
+    .hero::after{
+      content: ""; position: absolute; inset: -10% -20% auto; height: 120px; filter: blur(80px);
+      background: radial-gradient(50% 70% at 50% 40%, rgba(84,197,210,.45), rgba(0,0,0,0));
+      z-index: -1; opacity: .8;
+    }
+    .hero-inner{ max-width: var(--maxw); width: 100%; display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(18px, 4vw, 40px); }
+    .hero h1 { font-size: clamp(36px, 6vw, 84px); line-height: .95; margin: 0; letter-spacing: -0.02em; }
+    .hero p { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); margin: 16px 0 24px; }
+    .hero .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius);
+      padding: clamp(14px, 3vw, 22px); box-shadow: var(--shadow);
+    }
+    .badge { display: inline-block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #c7fbff; background: rgba(106, 222, 245, .12); margin-bottom:2vh ; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(106, 222, 245, .35); }
+
+    /* ---------- Scroll-gallery (Apple-like step animation) ---------- */
+    .scrolly { max-width: var(--maxw); margin: 10vh auto; padding: 0 16px; position: relative; }
+    .stepper { position:sticky; top:700px; z-index: 2; padding: 10px 0 16px; backdrop-filter: blur(1px); }
+    .stepper h2 { margin: 0; font-size: clamp(22px, 2.6vw, 36px); }
+    .stepper .muted { color: var(--muted); font-weight: 500; }
+
+    .reel { margin-top: 18px; display: grid; grid-auto-flow: column; grid-auto-columns: 78vw; gap: 18px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .reel::-webkit-scrollbar{ display: none; }
+    .frame { position: relative; height: min(72vh, 820px); border-radius: calc(var(--radius) + 6px); overflow: hidden; scroll-snap-align: start; background: #0e0e11; border: 1px solid rgba(255,255,255,.06); }
+    .frame img, .frame video { width: 100%; height: 100%; object-fit: contain; background: #000; display: block; }
+    .frame .caption { position: absolute; inset: auto 12px 12px 12px; background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.55)); padding: 16px; border-radius: 14px; color: #f2f2f2; font-weight: 600; }
+
+    /* ---------- Albums grid ---------- */
+    .albums { max-width: var(--maxw); margin: 10vh auto; padding: 0 16px; }
+    .albums-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 14px; }
+    .albums-head h2 { margin: 0; font-size: clamp(22px, 2.6vw, 36px); }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.08); background: var(--panel); color: var(--text); font-size: 14px; cursor: pointer; }
+    .chip[aria-pressed="true"]{ outline: 2px solid var(--ring); background: var(--panel-2); }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(12px, 2vw, 18px); }
+    .card { grid-column: span 4; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); overflow: clip; transition: transform .18s ease, border-color .2s ease; cursor: pointer; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.14); }
+    .cover { aspect-ratio: 4/3; overflow: hidden; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.02);
+      transform: scale(1.02); transition: transform .25s ease; }
+    .card:hover .cover img{ transform: scale(1.06); }
+    .card .meta { padding: 14px 14px 16px; display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+    .meta h3 { margin: 0; font-size: 18px; }
+    .meta p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+    .count { font-weight: 700; color: var(--link); }
+
+    /* ---------- Lightbox ---------- */
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.95); display: none; place-items: center; z-index: 60; }
+    .lightbox.show { display: grid; }
+    .lb-stage { position: relative; width: min(92vw, 1400px); height: min(86vh, 940px); border-radius: 16px; overflow: hidden; background: #0a0a0b; border: 1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); }
+    .lb-media { width: 100%; height: 100%; object-fit: contain; background: #0a0a0b; }
+    .lb-ui { position: absolute; inset: 0; pointer-events: none; }
+    .lb-top { position: absolute; inset: 0 0 auto 0; display: flex; justify-content: space-between; padding: 10px; background: linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,0)); }
+    .lb-bottom { position: absolute; inset: auto 0 0 0; display: flex; justify-content: center; gap: 10px; padding: 10px 10px 14px; background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.6)); }
+    .lb-btn { pointer-events: auto; }
+
+    .thumbs { display: flex; gap: 10px; overflow-x: auto; padding: 6px 10px; max-width: 100%; scroll-snap-type: x proximity; }
+    .thumbs img, .thumbs video { width: 100px; height: 66px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,.12); opacity: .7; cursor: pointer; }
+    .thumbs .active { opacity: 1; outline: 2px solid var(--ring); }
+
+    /* ---------- Footer ---------- */
+    footer{ border-top: 1px solid rgba(255,255,255,.08); margin-top: 16vh; padding: 36px 16px; color: var(--muted); }
+    .foot-inner{ max-width: var(--maxw); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1000px){ .hero-inner{ grid-template-columns: 1fr; } .card{ grid-column: span 6; } }
+    @media (max-width: 720px){ .card{ grid-column: span 12; } .reel{ grid-auto-columns: 92vw; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand"><a href="#top" aria-current="page">RYCHTERA</a></div>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#reel">Portfolio</a></li>
+        <li><a href="#albums">Albums</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </nav>
+    <div class="right">
+      <button class="icon-btn" id="lang-en" title="English">EN</button>
+      <button class="icon-btn" id="lang-cz" title="Česky">CZ</button>
+      <a class="btn" href="mailto:rychtera.creator@gmail.com?subject=Booking%20shoot">Book a Shoot</a>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <span class="badge">Photography • Video • Creative</span>
+        <h1>Let me capture your stories in motion and stills.</h1>
+        <p>Hi, welcome to my portfolio, I am Václav, 20 year old creator from Czechia - Scroll to explore my work.</p>
+        <div style="display:flex; gap:10px; flex-wrap: wrap;">
+          <a class="btn" href="#reel">View Photos</a>
+          <a class="btn" href="#albums" style="background:linear-gradient(180deg,#c1ffd7,#6af5b5); box-shadow:0 6px 24px rgba(122, 255, 197, .25); color:#00160a;">Browse Albums</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <p style="margin:0 0 8px; color:var(--muted)">Featured clients & shoots</p>
+        <div class="grid" style="grid-template-columns: repeat(12,1fr); gap:10px;">
+          <div class="card" style="grid-column: span 6"><div class="cover"><img loading="lazy" src="pht18.jpg" alt="Concert light beams"></div><div class="meta"><div><h3>DJ Flexnar</h3><p>Concerts · Pec pod Sněžkou</p></div><span class="count"></span></div></div>
+          <div class="card" style="grid-column: span 6"><div class="cover"><img loading="lazy" src="showcase.jpg" alt="Portrait"></div><div class="meta"><div><h3>Onyx BarberShop</h3><p>Services · Červený Kostelec</p></div><span class="count"></span></div></div>
+           <div class="card" style="grid-column: span 6"><div class="cover"><img loading="lazy" src="showcase2.jpg" alt="Concert light beams"></div><div class="meta"><div><h3>MOREAL clothing</h3><p>Fashion · Praha</p></div><span class="count"></span></div></div>
+          <div class="card" style="grid-column: span 6"><div class="cover"><img loading="lazy" src="pht7.jpg" alt="Portrait"></div><div class="meta"><div><h3>G1nter</h3><p>RAP show · Dance Pivovar</p></div><span class="count"></span></div></div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll Reel with horizontal snapping (Apple-style step gallery) -->
+  <section class="scrolly" id="reel" aria-label="Featured reel">
+    <div class="stepper">
+      <h2>Featured</h2>
+      <div class="muted">Scroll → or use trackpad to step through</div>
+    </div>
+    <div class="reel" data-reel>
+      <figure class="frame" data-media><img src="pht22.jpg" alt="Atmospheric crowd" /></figure>
+      <figure class="frame" data-media><img src="pht17.jpg" alt="Blue haze" /></figure>
+      <figure class="frame" data-media><img src="pht7.jpg" alt="Backstage" /></figure>
+      <figure class="frame" data-media><video src="vid1.mp4" autoplay muted playsinline loop></video></figure>
+      <figure class="frame" data-media><img src="pht19.jpg" alt="Artist silhouette" /></figure>
+      <figure class="frame" data-media><img src="pht1.jpg" alt="Hands up" /></figure>
+      <figure class="frame" data-media><video src="vid2.mp4" autoplay muted playsinline loop></video></figure>
+      <figure class="frame" data-media><img src="pht3.jpg" alt="DJ booth" /></figure>
+            <figure class="frame" data-media><img src="pht22.jpg" alt="Atmospheric crowd" /></figure>
+      <figure class="frame" data-media><img src="pht17.jpg" alt="Blue haze" /></figure>
+      <figure class="frame" data-media><img src="pht7.jpg" alt="Backstage" /></figure>
+      <figure class="frame" data-media><video src="vid1.mp4" autoplay muted playsinline loop></video></figure>
+      <figure class="frame" data-media><img src="pht19.jpg" alt="Artist silhouette" /></figure>
+      <figure class="frame" data-media><img src="pht1.jpg" alt="Hands up" /></figure>
+      <figure class="frame" data-media><video src="vid2.mp4" autoplay muted playsinline loop></video></figure>
+      <figure class="frame" data-media><img src="pht3.jpg" alt="DJ booth" /></figure>
+            <figure class="frame" data-media><img src="pht22.jpg" alt="Atmospheric crowd" /></figure>
+      <figure class="frame" data-media><img src="pht17.jpg" alt="Blue haze" /></figure>
+      <figure class="frame" data-media><img src="pht7.jpg" alt="Backstage" /></figure>
+      <figure class="frame" data-media><video src="vid1.mp4" autoplay muted playsinline loop></video></figure>
+      <figure class="frame" data-media><img src="pht19.jpg" alt="Artist silhouette" /></figure>
+      <figure class="frame" data-media><img src="pht1.jpg" alt="Hands up" /></figure>
+      <figure class="frame" data-media><video src="vid2.mp4" autoplay muted playsinline loop></video></figure>
+      <figure class="frame" data-media><img src="pht3.jpg" alt="DJ booth" /></figure>
+    </div>
+  </section>
+
+  <!-- Albums (auto-built from JS data) -->
+  <section class="albums" id="albums">
+    <div class="albums-head">
+      <h2>Albums</h2>
+      <div class="filters" id="filters">
+        <!-- filled by JS: tags as chips -->
+      </div>
+    </div>
+    <div class="grid" id="albumGrid" aria-live="polite"></div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Album viewer">
+    <div class="lb-stage">
+      <div class="lb-ui lb-top">
+        <div></div>
+        <div style="display:flex; gap:8px;">
+          <button class="icon-btn lb-btn" data-action="prev" title="Prev" aria-label="Previous">⟨</button>
+          <button class="icon-btn lb-btn" data-action="next" title="Next" aria-label="Next">⟩</button>
+          <button class="icon-btn lb-btn" data-action="close" title="Close" aria-label="Close">✕</button>
+        </div>
+      </div>
+      <img class="lb-media" id="lbMedia" alt="Current media" />
+      <div class="lb-ui lb-bottom">
+        <div class="thumbs" id="lbThumbs"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-inner">
+      <div>© <span id="year"></span> Rychtera. All rights reserved.</div>
+    <button class="insta"
+        onclick="window.location.href = 'https://instagram.com/s_rychtera';">
+        Instagram
+    </button>
+
+    </div>
+  </footer>
+
+  <script>
+    /* =========================================================
+       ALBUM DATA — simple JSON you can edit / extend
+       Group each photoshoot as an album with cover + media list
+       ========================================================= */
+    const albums = [
+      {
+        id: 'night-pulse',
+        title: 'DJ Events',
+        tags: ['shows'],
+        cover: 'pht34.jpg',
+        items: [
+          {src: 'pht34.jpg', type: 'image'},
+          {src: 'pht33.jpg', type: 'image'},
+          {src: 'pht32.jpg', type: 'image'},
+          {src: 'pht28.jpg', type: 'image'},
+          {src: 'pht25.jpg', type: 'image'},
+          {src: 'pht10.jpg', type: 'image'},
+          {src: 'pht11.jpg', type: 'image'},
+          {src: 'pht36.jpg', type: 'image'},
+          {src: 'pht18.jpg', type: 'image'},
+          {src: 'pht1.jpg', type: 'image'}
+        ]
+      },
+      {
+        id: 'portraits',
+        title: 'RAP shows',
+        tags: ['performance', 'Rap'],
+        cover: 'pht7.jpg',
+        items: [
+          {src: 'pht7.jpg', type: 'image'},
+          {src: 'pht39.jpg', type: 'image'},
+          {src: 'pht35.jpg', type: 'image'},
+           {src: 'pht2.jpg', type: 'image'},
+          {src: 'pht9.jpg', type: 'image'},
+          {src: 'pht13.jpg', type: 'image'},
+           {src: 'pht37.jpg', type: 'image'}
+        ]
+      },
+      {
+        id: 'city-noir',
+        title: 'Services & Fashion',
+        tags: ['street', 'barber'],
+        cover: 'pht20.jpg',
+        items: [
+          {src: 'pht20.jpg', type: 'image'},
+          {src: 'pht14.jpg', type: 'image'},
+          {src: 'pht21.jpg', type: 'image'},
+          {src: 'pht22.jpg', type: 'image'},
+          {src: 'pht8.jpg', type: 'image'},
+          {src: 'pht40.jpg', type: 'image'},
+          {src: 'pht41.jpg', type: 'image'},
+          {src: 'pht42.jpg', type: 'image'},
+          {src: 'pht43.jpg', type: 'image'},
+          {src: 'pht44.jpg', type: 'image'},
+          {src: 'pht45.jpg', type: 'image'},
+          {src: 'pht46.jpg', type: 'image'}
+        ]
+      }
+    ];
+
+    /* =========================================================
+       MUST‑HAVE FUNCTIONS (vanilla JS)
+       - buildAlbums(): render cards from albums[]
+       - buildFilters(): tag chips + filtering
+       - openAlbum(id, startIndex)
+       - openLightbox(items, startIndex)
+       - closeLightbox()
+       - navigateLightbox(dir)
+       - setLang(lang): persist language choice
+       - enableScrollReel(): vertical wheel → horizontal reel scroll
+       - lazyLoadMedia(): swap data-src → src on intersect
+       ========================================================= */
+
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+
+    function buildAlbums(){
+      const grid = $('#albumGrid');
+      grid.innerHTML = '';
+      const active = getActiveTag();
+      const list = active ? albums.filter(a => a.tags.includes(active)) : albums;
+      for (const a of list){
+        const count = a.items.length;
+        const el = document.createElement('article');
+        el.className = 'card'; el.setAttribute('data-album', a.id);
+        el.innerHTML = `
+          <div class="cover"><img loading="lazy" src="${a.cover}" alt="${a.title}"></div>
+          <div class="meta">
+            <div>
+              <h3>${a.title}</h3>
+              <p>${a.tags.map(t=>`#${t}`).join(' • ')}</p>
+            </div>
+            <div class="count">${count}</div>
+          </div>`;
+        el.addEventListener('click', () => openAlbum(a.id, 0));
+        grid.appendChild(el);
+      }
+    }
+
+    function uniqueTags(){
+      return Array.from(new Set(albums.flatMap(a => a.tags)));
+    }
+
+    function buildFilters(){
+      const wrap = $('#filters'); wrap.innerHTML = '';
+      const makeChip = (label, tag) => {
+        const b = document.createElement('button'); b.className = 'chip';
+        b.textContent = label; b.setAttribute('data-tag', tag ?? '');
+        if (!tag && !getActiveTag()) b.setAttribute('aria-pressed', 'true');
+        b.addEventListener('click', () => {
+          $$('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+          b.setAttribute('aria-pressed','true');
+          setActiveTag(tag || null); buildAlbums();
+        });
+        return b;
+      };
+      wrap.appendChild(makeChip('All', null));
+      for (const t of uniqueTags()) wrap.appendChild(makeChip(`#${t}`, t));
+    }
+
+    function getActiveTag(){ return sessionStorage.getItem('activeTag'); }
+    function setActiveTag(tag){ tag ? sessionStorage.setItem('activeTag', tag) : sessionStorage.removeItem('activeTag'); }
+
+    function openAlbum(id, startIndex=0){
+      const album = albums.find(a=>a.id===id); if (!album) return;
+      openLightbox(album.items, startIndex);
+    }
+
+    // Lightbox state
+    let LB = { items: [], i: 0 };
+
+    function openLightbox(items, startIndex=0){
+      LB.items = items; LB.i = startIndex;
+      const lb = $('#lightbox'); lb.classList.add('show');
+      renderLB();
+      document.addEventListener('keydown', onKey);
+    }
+
+    function closeLightbox(){ $('#lightbox').classList.remove('show'); document.removeEventListener('keydown', onKey); }
+
+    function onKey(e){
+      if (e.key === 'Escape') return closeLightbox();
+      if (e.key === 'ArrowRight') return navigateLightbox(1);
+      if (e.key === 'ArrowLeft') return navigateLightbox(-1);
+    }
+
+    function navigateLightbox(dir){
+      LB.i = (LB.i + dir + LB.items.length) % LB.items.length;
+      renderLB(true);
+    }
+
+    function renderLB(focusThumb=false){
+      const item = LB.items[LB.i];
+      const media = $('#lbMedia');
+      if (item.type === 'video'){
+        const v = document.createElement('video'); v.src = item.src; v.autoplay = true; v.loop = true; v.muted = true; v.playsInline = true; v.className = 'lb-media';
+        media.replaceWith(v); v.id = 'lbMedia';
+      } else {
+        const img = document.createElement('img'); img.src = item.src; img.alt = item.alt || ''; img.className = 'lb-media';
+        media.replaceWith(img); img.id = 'lbMedia';
+      }
+      // thumbs
+      const thumbs = $('#lbThumbs'); thumbs.innerHTML = '';
+      LB.items.forEach((it, idx)=>{
+        const t = it.type==='video' ? document.createElement('video') : document.createElement('img');
+        t.src = it.src; t.title = `#${idx+1}`; if (it.type==='video'){ t.muted = true; t.loop = true; t.playsInline = true; }
+        t.addEventListener('click', ()=>{ LB.i = idx; renderLB(); });
+        thumbs.appendChild(t);
+        if (idx === LB.i) t.classList.add('active');
+      });
+      if (focusThumb){ const active = thumbs.children[LB.i]; active?.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'}); }
+    }
+
+    // LB controls
+    $('#lightbox').addEventListener('click', (e)=>{ if (e.target.id==='lightbox' || e.target.dataset.action==='close') closeLightbox(); });
+    $$('.lb-btn[data-action="next"]').forEach(b=>b.addEventListener('click', ()=>navigateLightbox(1)));
+    $$('.lb-btn[data-action="prev"]').forEach(b=>b.addEventListener('click', ()=>navigateLightbox(-1)));
+
+    // Language (simple demo, extend with data-* attributes as in your old site)
+    function setLang(lang){ localStorage.setItem('lang', lang); document.documentElement.setAttribute('lang', lang); }
+    function getLang(){ return localStorage.getItem('lang') || 'en'; }
+    $('#lang-en').addEventListener('click', ()=>setLang('en'));
+    $('#lang-cz').addEventListener('click', ()=>setLang('cs'));
+
+    // Horizontal reel: convert vertical wheel to horizontal scroll for nice step-through
+    function enableScrollReel(){
+      const reel = document.querySelector('[data-reel]');
+      reel.addEventListener('wheel', (e)=>{
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+          reel.scrollBy({ left: e.deltaY, behavior: 'auto' });
+          e.preventDefault();
+        }
+      }, { passive: false });
+    }
+
+    // Lazy-load any [loading="lazy"] images (native) + intersection for videos
+    function lazyLoadMedia(){
+      const vids = $$('video[preload="none"]');
+      const obs = new IntersectionObserver((ents)=>{
+        ents.forEach(ent=>{
+          if (ent.isIntersecting){
+            const v = ent.target; v.preload = 'metadata'; obs.unobserve(v);
+          }
+        });
+      }, { rootMargin: '200px' });
+      vids.forEach(v=>obs.observe(v));
+    }
+
+    // Simple reveal animation using IntersectionObserver
+    function animateOnScroll(){
+      const els = $$('.card, .frame');
+      els.forEach(el=>{ el.style.opacity = .001; el.style.transform = 'translateY(10px)'; el.style.transition = 'opacity .5s ease, transform .5s ease'; });
+      const io = new IntersectionObserver((ents)=>{
+        ents.forEach(ent=>{
+          if (ent.isIntersecting){
+            ent.target.style.opacity = 1; ent.target.style.transform = 'translateY(0)'; io.unobserve(ent.target);
+          }
+        });
+      }, { threshold: .12, rootMargin: '60px' });
+      els.forEach(el=>io.observe(el));
+    }
+
+    // Prefetch next in reel for snappy feel
+    function prefetchReel(){
+      const imgs = $$('#reel [data-media] img');
+      imgs.forEach((img, i)=>{
+        const next = imgs[i+1]; if (!next) return;
+        const link = document.createElement('link'); link.rel = 'prefetch'; link.as = 'image'; link.href = next.src; document.head.appendChild(link);
+      });
+    }
+
+    // INIT
+    (function init(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      setLang(getLang());
+      buildFilters();
+      buildAlbums();
+      enableScrollReel();
+      lazyLoadMedia();
+      animateOnScroll();
+      prefetchReel();
+    })();
+  </script>
+</body>
+</html>
